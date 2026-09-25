@@ -131,7 +131,7 @@ describe('website smoke test', () => {
     // `useProjects().label()`), not a legacy project-code badge — items[0]
     // is one of archaeology's borrowed Sharing History records (archaeology
     // owns no native project of its own).
-    // inventory-app#1728: `.source-reference` is `RecordSheetView`'s own
+    // inventory-app#1728: `.source-reference` is `ItemDetailView`'s own
     // `.mwnf-sheet-source` block, built from the family data layer's
     // `itemSheet.sourceDatabase` spec key rather than local markup.
     expect(host.querySelector('.mwnf-sheet-source').textContent).toContain('Sharing History')
@@ -145,7 +145,7 @@ describe('website smoke test', () => {
   it('colours and names the source-database chip from the manifest projects section', async () => {
     const { app, host } = await mountSite('#/item/9fd48483-773e-56ef-a4ac-80ac9b4f89d0')
     await vi.waitFor(() => expect(host.querySelector('.mwnf-sheet-source .mwnf-chip')).not.toBeNull(), { timeout: 20000 })
-    // inventory-app#1728: `RecordSheetView`'s own `.mwnf-sheet-source__line`
+    // inventory-app#1728: `ItemDetailView`'s own `.mwnf-sheet-source__line`
     // renders the chip as a decorative, `aria-hidden` colour dot beside the
     // text — the project name is the line's own text, not the chip span's.
     const line = host.querySelector('.mwnf-sheet-source__line')
@@ -159,7 +159,7 @@ describe('website smoke test', () => {
   // list of project ids, not a literal legacy project-code check — it must
   // show for that project's own records and stay off everyone else's.
   // inventory-app#1728: `.links-container`/`.info-eiac` are
-  // `RecordSheetView`'s own `.mwnf-sheet-source`/`.mwnf-sheet-notice` now.
+  // `ItemDetailView`'s own `.mwnf-sheet-source`/`.mwnf-sheet-notice` now.
   it('shows the explore-partner notice only for the project dataset.config.js lists', async () => {
     const epm = await mountSite('#/item/1bdcb311-686f-5698-aa9b-df0727b85070')
     await vi.waitFor(() => expect(epm.host.querySelector('.mwnf-sheet-source')).not.toBeNull(), { timeout: 20000 })
@@ -175,7 +175,7 @@ describe('website smoke test', () => {
   // inventory-app#1727 phase 4: the related-database and
   // artistic-introduction blocks are purely manifest-driven — the importer's
   // URL map fills `manifest.projects[*].related_database_url` /
-  // `artistic_introduction_url` at import time, and `RecordSheetView`'s
+  // `artistic_introduction_url` at import time, and `ItemDetailView`'s
   // `related.databaseLabel`/`.artisticIntroductionLabel` (composables/
   // gallery.js's `itemSheet` spec, inventory-app#1728) render a block iff
   // that project's URL is non-null. archaeology-data 1.0.1 carries both URLs
